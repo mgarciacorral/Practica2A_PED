@@ -1,4 +1,8 @@
 package Librerias.EstructurasDatos.Lineales;
 
-public class ArrayCola {
+import Librerias.EstructurasDatos.Modelos.I_Cola;
+
+public class ArrayCola implements I_Cola
+{
+
 }
