@@ -6,15 +6,13 @@ public class Carrera
     private String nombre;
     private String poblacion;
     private LocalDate fecha;
-    private int numeroCorredores;
 
-    public Carrera(int distancia, String nombre, String poblacion, LocalDate fecha, int numeroCorredores)
+    public Carrera(int distancia, String nombre, String poblacion, LocalDate fecha)
     {
         this.distancia = distancia;
         this.nombre = nombre;
         this.poblacion = poblacion;
         this.fecha = fecha;
-        this.numeroCorredores = numeroCorredores;
     }
 
     public int getDistancia()
@@ -37,8 +35,4 @@ public class Carrera
         return fecha;
     }
 
-    public int getNumeroCorredores()
-    {
-        return numeroCorredores;
-    }
 }
