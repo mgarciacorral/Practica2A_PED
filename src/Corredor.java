@@ -56,6 +56,10 @@ public class Corredor
         return dorsal + "\t" + nombre + "\t" + tiempoH + ":" + tiempoM + ":" + tiempoS;
     }
 
-
+    public void mostrarDatos()
+    {
+        System.out.println("Dorsal\t\tNombre\t\t\tTiempo");
+        System.out.println(dorsal + "\t\t" + nombre + "\t\t\t" + tiempoH + ":" + tiempoM + ":" + tiempoS);
+    }
 
 }

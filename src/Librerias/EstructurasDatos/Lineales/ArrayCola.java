@@ -9,6 +9,11 @@ public class ArrayCola<E> implements I_Cola<E>
     private int fin;
     private int talla;
 
+    public ArrayCola()
+    {
+        this(10);
+    }
+
     public ArrayCola(int capacidad)
     {
         array = (E[]) new Object[capacidad];
@@ -21,7 +26,7 @@ public class ArrayCola<E> implements I_Cola<E>
     {
         if (talla == array.length)
         {
-            this.duplicarCapacidad();
+            this.aumentarCapacidad();
         }
         fin = (fin + 1) % array.length;
         array[fin] = elemento;
@@ -49,12 +54,17 @@ public class ArrayCola<E> implements I_Cola<E>
         return this.array[inicio];
     }
 
+    public int getTalla()
+    {
+        return this.talla;
+    }
+
     public boolean esVacia()
     {
         return this.talla == 0;
     }
 
-    private void duplicarCapacidad()
+    private void aumentarCapacidad()
     {
         E[] nuevoArray = (E[]) new Object[array.length + 1];
         for (int i = 0; i < talla; i++)
@@ -66,7 +76,7 @@ public class ArrayCola<E> implements I_Cola<E>
         fin = talla - 1;
     }
 
-    public void toString()
+    public void toStringIterativo()
     {
         int index = inicio;
 
