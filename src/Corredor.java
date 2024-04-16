@@ -1,11 +1,11 @@
-public class Corredor
+public class Corredor implements Comparable<Corredor>
 {
-    int dorsal;
-    String nombre;
-    int puestp;
-    int tiempoH;
-    int tiempoM;
-    int tiempoS;
+    private int dorsal;
+    private String nombre;
+    private int puesto;
+    private int tiempoH;
+    private int tiempoM;
+    private int tiempoS;
 
     public Corredor(int dorsal, String nombre, int tiempoH, int tiempoM, int tiempoS)
     {
@@ -28,12 +28,12 @@ public class Corredor
 
     public int getPuesto()
     {
-        return puestp;
+        return puesto;
     }
 
     public void setPuesto(int puesto)
     {
-        this.puestp = puesto;
+        this.puesto = puesto;
     }
 
     public int getTiempoH()
@@ -62,4 +62,25 @@ public class Corredor
         System.out.println(dorsal + "\t\t" + nombre + "\t\t\t" + tiempoH + ":" + tiempoM + ":" + tiempoS);
     }
 
+    public int compareTo(Corredor corredor) {
+        if (this.tiempoH < corredor.tiempoH) {
+            return -1;
+        } else if (this.tiempoH > corredor.tiempoH) {
+            return 1;
+        } else {
+            if (this.tiempoM < corredor.tiempoM) {
+                return -1;
+            } else if (this.tiempoM > corredor.tiempoM) {
+                return 1;
+            } else {
+                if (this.tiempoS < corredor.tiempoS) {
+                    return -1;
+                } else if (this.tiempoS > corredor.tiempoS) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            }
+        }
+    }
 }

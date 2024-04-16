@@ -81,7 +81,7 @@ public class ArrayCola<E> implements I_Cola<E>
         int index = inicio;
 
         for (int i = 0; i < talla; i++) {
-            System.out.println(array[index] + " ");
+            System.out.println(array[index].toString() + " ");
             index = (index + 1) % array.length;
         }
     }
@@ -94,7 +94,7 @@ public class ArrayCola<E> implements I_Cola<E>
         while (!this.esVacia())
         {
             elemento = this.desencolar();
-            while (!colaAux.esVacia() && ((Comparable)colaAux.primero()).compareTo(elemento) < 0)
+            while (!colaAux.esVacia() && ((Comparable)colaAux.primero()).compareTo(elemento) > 0)
             {
                 elementoAux = colaAux.desencolar();
                 this.encolar(elementoAux);
