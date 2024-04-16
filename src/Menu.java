@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import Librerias.EstructurasDatos.Lineales.ArrayCola;
 
+
 public class Menu
 {
     private ArrayCola<Corredor> colaCorredores = null;
@@ -219,6 +220,7 @@ public class Menu
         System.out.println("Dorsal\t\tNombre\t\t\tTiempo");
         colaCorredores.ordenarAscendente();
         colaCorredores.toStringIterativo();
+
     }
 
     public void mostrarResumenFinal(){

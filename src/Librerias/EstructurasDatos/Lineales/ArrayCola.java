@@ -88,23 +88,22 @@ public class ArrayCola<E> implements I_Cola<E>
 
     public void ordenarAscendente()
     {
-        ArrayCola<E> colaAux = new ArrayCola<>(array.length);
+        ArrayCola<E> colaAux = this;
+        ArrayCola<E> colaOrdenada = new ArrayCola<>(array.length);
+
         E elemento;
         E elementoAux;
-        while (!this.esVacia())
+
+        while(!colaAux.esVacia())
         {
-            elemento = this.desencolar();
-            while (!colaAux.esVacia() && ((Comparable)colaAux.primero()).compareTo(elemento) < 0)
+            elemento = colaAux.desencolar();
+            while(!colaOrdenada.esVacia() && ((Comparable)colaAux.primero()).compareTo(elemento) < 0)
             {
                 elementoAux = colaAux.desencolar();
-                this.encolar(elementoAux);
+                colaOrdenada.encolar(elementoAux);
             }
-            colaAux.encolar(elemento);
+            colaOrdenada.encolar(elemento);
         }
-        while (!colaAux.esVacia())
-        {
-            elementoAux = colaAux.desencolar();
-            this.encolar(elementoAux);
-        }
+
     }
 }

@@ -62,24 +62,19 @@ public class Corredor implements Comparable<Corredor>
     }
 
     public int compareTo(Corredor corredor) {
-        if (this.tiempoH < corredor.tiempoH) {
+        int tiempoTh = this.tiempoH * 3600 + this.tiempoM * 60 + this.tiempoS;
+        int tiempoTc = corredor.tiempoH * 3600 + corredor.tiempoM * 60 + corredor.tiempoS;
+
+        if(tiempoTh < tiempoTc)
+        {
             return -1;
-        } else if (this.tiempoH > corredor.tiempoH) {
-            return 1;
-        } else {
-            if (this.tiempoM < corredor.tiempoM) {
-                return -1;
-            } else if (this.tiempoM > corredor.tiempoM) {
-                return 1;
-            } else {
-                if (this.tiempoS < corredor.tiempoS) {
-                    return -1;
-                } else if (this.tiempoS > corredor.tiempoS) {
-                    return 1;
-                } else {
-                    return 0;
-                }
-            }
         }
-    }
-}
+        else if(tiempoTh > tiempoTc)
+        {
+            return 1;
+        }
+        else{
+            return 0;
+        }
+}}
+
