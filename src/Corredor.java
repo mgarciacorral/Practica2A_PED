@@ -53,7 +53,7 @@ public class Corredor implements Comparable<Corredor>
 
     public String toString()
     {
-        return dorsal + "\t" + nombre + "\t" + tiempoH + ":" + tiempoM + ":" + tiempoS;
+        return dorsal + "\t\t" + nombre + "\t\t\t" + tiempoH + ":" + tiempoM + ":" + tiempoS;
     }
 
     public void mostrarDatos()

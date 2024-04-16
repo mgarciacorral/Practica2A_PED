@@ -81,29 +81,60 @@ public class ArrayCola<E> implements I_Cola<E>
         int index = inicio;
 
         for (int i = 0; i < talla; i++) {
-            System.out.println(array[index].toString() + " ");
+            System.out.println(array[index].toString());
             index = (index + 1) % array.length;
         }
     }
 
-    public void ordenarAscendente()
+    public void reverse()
     {
-        ArrayCola<E> colaAux = this;
-        ArrayCola<E> colaOrdenada = new ArrayCola<>(array.length);
-
-        E elemento;
-        E elementoAux;
-
-        while(!colaAux.esVacia())
+        if(!esVacia())
         {
-            elemento = colaAux.desencolar();
-            while(!colaOrdenada.esVacia() && ((Comparable)colaAux.primero()).compareTo(elemento) < 0)
-            {
-                elementoAux = colaAux.desencolar();
-                colaOrdenada.encolar(elementoAux);
+            E elemento = desencolar();
+            reverse();
+            encolar(elemento);
+        }
+    }
+
+    public ArrayCola<E> clone()
+    {
+        ArrayCola<E> clon = new ArrayCola<E>(talla);
+        for(int i = 0; i < talla; i++)
+        {
+            E elemento = this.desencolar();
+            clon.encolar(elemento);
+            this.encolar(elemento);
+        }
+        return clon;
+    }
+    public ArrayCola<E> ordenarDesc()
+    {
+        ArrayCola<E> original = clone();
+        ArrayCola<E> colaOrdenada = new ArrayCola<E>(talla);
+        while (!this.esVacia()) {
+            E elementoActual = desencolar();
+            while (!colaOrdenada.esVacia() && ((Comparable)elementoActual).compareTo(colaOrdenada.primero()) > 0) {
+                this.encolar(colaOrdenada.desencolar());
             }
-            colaOrdenada.encolar(elemento);
+            colaOrdenada.encolar(elementoActual);
         }
 
+        while (!original.esVacia()) {
+            this.encolar(original.desencolar());
+        }
+
+        return colaOrdenada;
+    }
+    public void imprimirOrdenadoDesc()
+    {
+        ArrayCola<E> aux = ordenarDesc();
+        aux.toStringIterativo();
+    }
+
+    public void imprimirOrdenadoAsc()
+    {
+        ArrayCola<E> aux = ordenarDesc();
+        aux.reverse();
+        aux.toStringIterativo();
     }
 }

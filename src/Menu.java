@@ -1,5 +1,4 @@
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Scanner;
 import Librerias.EstructurasDatos.Lineales.ArrayCola;
 
@@ -218,9 +217,7 @@ public class Menu
 
     public void mostrarTiemposOrdenados(){
         System.out.println("Dorsal\t\tNombre\t\t\tTiempo");
-        colaCorredores.ordenarAscendente();
-        colaCorredores.toStringIterativo();
-
+        colaCorredores.imprimirOrdenadoAsc();
     }
 
     public void mostrarResumenFinal(){
