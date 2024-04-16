@@ -6,6 +6,7 @@ import Librerias.EstructurasDatos.Lineales.ArrayCola;
 public class Menu
 {
     private ArrayCola<Corredor> colaCorredores = null;
+    private Corredor ganador = null;
     private Carrera carrera = null;
     public Menu()
     {
@@ -183,6 +184,7 @@ public class Menu
             corredor = colaCorredores.desencolar();
             if(corredor.getDorsal() == dorsal)
             {
+                System.out.println("Dorsal\t\tNombre\t\t\tTiempo");
                 corredor.mostrarDatos();
                 encontrado = true;
             }
@@ -211,16 +213,43 @@ public class Menu
             colaCorredores.encolar(colaAux.desencolar());
         }
     }
+
+
     public void mostrarTiemposOrdenados(){
-        ArrayCola<Corredor> colaAux = new ArrayCola<Corredor>(colaCorredores.getTalla());
-        ArrayCola<Corredor> colaOrdenada = new ArrayCola<Corredor>(colaCorredores.getTalla());
-        Corredor corredor = null;
+        System.out.println("Dorsal\t\tNombre\t\t\tTiempo");
+        Corredor corredor;
+        ArrayList<Corredor> corredores = new ArrayList<Corredor>();
+        while(!colaCorredores.esVacia()){
+            corredor = colaCorredores.desencolar();
+            corredores.add(corredor);
+        }
+        for(int i = 0; i < corredores.size(); i++){
+            colaCorredores.encolar(corredores.get(i));
+        }
+
+        for(int i = 0; i < corredores.size(); i++){
+            for(int j = 0; j < corredores.size(); j++){
+                int tiempoI = corredores.get(i).getTiempoH()*3600 + corredores.get(i).getTiempoM()*60 + corredores.get(i).getTiempoS();
+                int tiempoJ = corredores.get(j).getTiempoH()*3600 + corredores.get(j).getTiempoM()*60 + corredores.get(j).getTiempoS();
+                if(tiempoI < tiempoJ){
+                    Corredor aux = corredores.get(i);
+                    corredores.set(i, corredores.get(j));
+                    corredores.set(j, aux);
+                }
+            }
+        }
+
+        for(int i = 0; i < corredores.size(); i++){
+            corredores.get(i).mostrarDatos();
+        }
+        ganador = corredores.get(0);
+
 
     }
 
     public void mostrarResumenFinal(){
         System.out.println("\t\tCARRERA: ");
-        System.out.println("Nombre de la carrera: " + carrera.getNombre());
+        System.out.println("Nombre de la carrera: \"" + carrera.getNombre()+ "\"");
         System.out.println("Distancia de la carrera: " + carrera.getDistancia());
         System.out.println("Poblacion de la carrera: " + carrera.getPoblacion());
         System.out.println("Fecha de la carrera: " + carrera.getFecha());
@@ -228,9 +257,12 @@ public class Menu
 
         System.out.println("\n\n\t\tRESUMEN FINAL: ");
         System.out.println("-Número de corredores participantes en la carrera: " + colaCorredores.getTalla());
-        System.out.println("-Tiempo del corredor ganador: ");
+        System.out.println("-Vencedor/a de la carrera: " + ganador.getNombre() + "(Dorsal " + ganador.getDorsal() + ")" + "-> Tiempo total: " + ganador.getTiempoH() + ":" + ganador.getTiempoM() + ":" + ganador.getTiempoS());
+
         System.out.println("-Tiempo medio empleado por los corredores: " + tiempoMedio());
     }
+
+
 
     public String tiempoMedio(){
         ArrayCola<Corredor> colaAux = new ArrayCola<Corredor>(colaCorredores.getTalla());

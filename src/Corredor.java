@@ -58,7 +58,6 @@ public class Corredor implements Comparable<Corredor>
 
     public void mostrarDatos()
     {
-        System.out.println("Dorsal\t\tNombre\t\t\tTiempo");
         System.out.println(dorsal + "\t\t" + nombre + "\t\t\t" + tiempoH + ":" + tiempoM + ":" + tiempoS);
     }
 
