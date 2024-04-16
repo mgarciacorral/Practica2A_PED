@@ -6,7 +6,6 @@ import Librerias.EstructurasDatos.Lineales.ArrayCola;
 public class Menu
 {
     private ArrayCola<Corredor> colaCorredores = null;
-    private Corredor ganador = null;
     private Carrera carrera = null;
     public Menu()
     {
@@ -221,6 +220,12 @@ public class Menu
     }
 
     public void mostrarResumenFinal(){
+        Corredor ganador;
+        ArrayCola<Corredor> colaAux = new ArrayCola<Corredor>(colaCorredores.getTalla());
+        colaAux = colaCorredores.ordenarDesc();
+        colaAux.reverse();
+        ganador = colaAux.desencolar();
+
         System.out.println("\t\tCARRERA: ");
         System.out.println("Nombre de la carrera: \"" + carrera.getNombre()+ "\"");
         System.out.println("Distancia de la carrera: " + carrera.getDistancia());
@@ -230,8 +235,7 @@ public class Menu
 
         System.out.println("\n\n\t\tRESUMEN FINAL: ");
         System.out.println("-Número de corredores participantes en la carrera: " + colaCorredores.getTalla());
-        System.out.println("-Vencedor/a de la carrera: " + ganador.getNombre() + "(Dorsal " + ganador.getDorsal() + ")" + "-> Tiempo total: " + ganador.getTiempoH() + ":" + ganador.getTiempoM() + ":" + ganador.getTiempoS());
-
+        System.out.println("Vencedor de la carrera: " + ganador.getNombre() + " con un tiempo de " + ganador.getTiempoH() + ":" + ganador.getTiempoM() + ":" + ganador.getTiempoS());
         System.out.println("-Tiempo medio empleado por los corredores: " + tiempoMedio());
     }
 
