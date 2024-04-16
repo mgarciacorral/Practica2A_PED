@@ -94,7 +94,7 @@ public class ArrayCola<E> implements I_Cola<E>
         while (!this.esVacia())
         {
             elemento = this.desencolar();
-            while (!colaAux.esVacia() && ((Comparable)colaAux.primero()).compareTo(elemento) > 0)
+            while (!colaAux.esVacia() && ((Comparable)colaAux.primero()).compareTo(elemento) < 0)
             {
                 elementoAux = colaAux.desencolar();
                 this.encolar(elementoAux);
