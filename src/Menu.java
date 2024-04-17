@@ -110,6 +110,7 @@ public class Menu
 
     public void pedirDatosCarrera()
     {
+        System.out.println("Introduce los datos de la carrera:\n");
         Scanner sc = new Scanner(System.in);
         System.out.print("Introduce el nombre de la carrera: ");
         String nombre = sc.nextLine();
@@ -139,6 +140,7 @@ public class Menu
 
     public void pedirDatosCorredores()
     {
+        System.out.println("Introduce los datos de los corredores:\n");
         int opc = -1;
         while(opc != 0)
         {
@@ -172,6 +174,7 @@ public class Menu
 
     public void buscarCorredor()
     {
+        System.out.println("Buscar un corredor por su dorsal\n");
         Scanner sc = new Scanner(System.in);
         System.out.println("Introduce el dorsal del corredor: ");
         int dorsal = sc.nextInt();
